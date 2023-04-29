@@ -2,6 +2,8 @@ package codelab.spring.springboot2.controller;
 
 
 import codelab.spring.springboot2.domain.Anime;
+import codelab.spring.springboot2.requests.AnimePostRequestBody;
+import codelab.spring.springboot2.requests.AnimePutRequestBody;
 import codelab.spring.springboot2.service.AnimeService;
 import codelab.spring.springboot2.util.DateUtil;
 
@@ -20,6 +22,7 @@ import java.util.List;
 @RequestMapping("animes")
 @Log4j2
 @RequiredArgsConstructor
+@ResponseStatus
 public class AnimeController {
     private final DateUtil dateUtil;
     private final AnimeService animeService;
@@ -34,14 +37,13 @@ public class AnimeController {
     @GetMapping("/{id}")
     public ResponseEntity<Anime> findById(@PathVariable Long id) {
         //return new ResponseEntity<>(animeService.listAll(), HttpStatus.OK) ;
-        return ResponseEntity.ok(animeService.findById(id));
+        return ResponseEntity.ok(animeService.findByIdOrThrowBadRequestException(id));
 
     }
 
     @PostMapping
-    @ResponseStatus
-    public ResponseEntity<Anime> save(@RequestBody Anime anime) {
-    return new ResponseEntity<>(animeService.save(anime),HttpStatus.CREATED );
+    public ResponseEntity<Anime> save(@RequestBody AnimePostRequestBody animePostRequestBody) {
+    return new ResponseEntity<>(animeService.save(animePostRequestBody),HttpStatus.CREATED );
     }
 
     @DeleteMapping(path = "/{id}")
@@ -52,8 +54,8 @@ public class AnimeController {
     }
 
     @PutMapping
-    public ResponseEntity<Void> replace(@RequestBody Anime anime){
-      animeService.replace(anime);
+    public ResponseEntity<Void> replace(@RequestBody AnimePutRequestBody animePutRequestBody){
+      animeService.replace(animePutRequestBody);
        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
