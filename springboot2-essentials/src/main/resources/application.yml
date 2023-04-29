@@ -8,7 +8,7 @@ server:
 spring:
   datasource:
     url:
-      jdbc:postgresql://localhost:5432/animesbd?useSSL=false&CreateDatabaseIfNotExist=true&allowPublicKeyRetrieval=true
+      jdbc:postgresql://localhost:5432/animesbd?CreateDatabaseIfNotExist=true
     username: postgres
     password: postgres
 
