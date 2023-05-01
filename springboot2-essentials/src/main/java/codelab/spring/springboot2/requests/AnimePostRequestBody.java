@@ -6,8 +6,10 @@ import lombok.Data;
 import org.hibernate.validator.constraints.URL;
 
 @Data
+
 public class AnimePostRequestBody {
     @NotEmpty(message = "The anime name cannot be empty!")
+    @NotNull
     private String name;
 
 }
