@@ -1,4 +1,4 @@
-package codelab.spring.springboot2.handler;
+package codelab.spring.springboot2.exception.handler;
 
 
 import codelab.spring.springboot2.exception.BadRequestException;
