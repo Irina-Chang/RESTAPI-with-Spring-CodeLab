@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface CodeLabUserRepository extends JpaRepository<CodeLabUserRepository , Long> {
+public interface CodeLabUserRepository extends JpaRepository<CodeLabUser , Long> {
     CodeLabUser findByUsername(String username);
 
 }
