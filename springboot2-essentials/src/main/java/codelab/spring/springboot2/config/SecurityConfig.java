@@ -23,7 +23,7 @@ public abstract class SecurityConfig implements WebSecurityConfigurer {
 
     private final CodeLabUserDetailsService codeLabUserDetailsService;
 
-
+@Override
     protected void configure(HttpSecurity http) throws Exception{
         http.csrf().disable()
                 //                csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
